@@ -1,0 +1,1 @@
+protocol Tile: Equatable, Codable {}

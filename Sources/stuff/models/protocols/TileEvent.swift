@@ -1,0 +1,1 @@
+protocol TileEvent: Equatable, Codable {}
