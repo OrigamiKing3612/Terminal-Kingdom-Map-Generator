@@ -45,6 +45,8 @@ enum Utils {
 						MapTile(type: .door(tile: DoorTile(type: .builder)), isWalkable: true, event: .openDoor)
 					case "d":
 						MapTile(type: .door(tile: DoorTile(type: .carpenter)), isWalkable: true, event: .openDoor)
+					case "p":
+						MapTile(type: .door(tile: DoorTile(type: .potter)), isWalkable: true, event: .openDoor)
 					case "0":
 						MapTile(type: .building(tile: .init(isPlacedByPlayer: false)), isWalkable: false)
 					case "W":
@@ -279,6 +281,8 @@ enum Utils {
 								return MapTile(type: .door(tile: DoorTile(type: .potter)), isWalkable: true, event: .openDoor)
 							case "@":
 								return MapTile(type: .playerStart, isWalkable: true)
+							case "1":
+								return MapTile(type: .npc(tile: NPCTile(type: .potter)), isWalkable: true, event: .talkToNPC)
 							default:
 								return MapTile(type: .plain, isWalkable: true)
 						}
