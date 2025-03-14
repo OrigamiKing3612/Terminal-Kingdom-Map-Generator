@@ -246,6 +246,10 @@ enum Utils {
 								return MapTile(type: .door(tile: DoorTile(type: .hospital(side: .bottom))), isWalkable: true, event: .openDoor)
 							case "@":
 								return MapTile(type: .playerStart, isWalkable: true)
+							case "b":
+								return MapTile(type: .bed(tile: .init(isPlacedByPlayer: false)), isWalkable: false)
+							case "d":
+								return MapTile(type: .desk(tile: .init(isPlacedByPlayer: false)), isWalkable: false)
 							default:
 								return MapTile(type: .plain, isWalkable: true)
 						}
