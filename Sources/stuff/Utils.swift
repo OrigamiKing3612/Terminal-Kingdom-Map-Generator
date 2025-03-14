@@ -90,6 +90,8 @@ enum Utils {
 								return MapTile(type: .door(tile: .init(type: .castle(side: .left))), isWalkable: true, event: .openDoor)
 							case "K":
 								return MapTile(type: .npc(tile: .init(type: .king)), isWalkable: true, event: .talkToNPC)
+							case "b":
+								return MapTile(type: .bed(tile: .init(isPlacedByPlayer: false)), isWalkable: true)
 							case "@":
 								return MapTile(type: .playerStart, isWalkable: true)
 							default:
