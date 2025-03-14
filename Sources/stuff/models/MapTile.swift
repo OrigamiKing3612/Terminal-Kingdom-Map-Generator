@@ -1,3 +1,5 @@
+import Foundation
+
 struct MapTile: Tile {
 	let type: MapTileType
 	let isWalkable: Bool
@@ -51,4 +53,30 @@ extension MapTile {
 
 enum BiomeType: String, Codable {
 	case plains, desert, snow, forest, volcano, tuntra
+}
+
+struct TilePosition: Codable, Hashable {
+	var x: Int
+	var y: Int
+	var mapType: MapType
+}
+
+enum MapType: Codable, Equatable, Hashable {
+	case mainMap
+	case mining
+	case castle(side: CastleSide)
+	case blacksmith
+	case mine
+	case shop
+	case builder
+	case hunting_area
+	case inventor
+	case house
+	case stable
+	case farm(type: FarmDoors)
+	case hospital(side: HospitalSide)
+	case carpenter
+	case restaurant
+	case potter
+	case custom(mapID: UUID)
 }
