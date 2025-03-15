@@ -1,16 +1,25 @@
 import Foundation
 
-struct CitizenType: Codable, Equatable, Hashable, Identifiable {
+struct NPC: Codable, Hashable, Equatable {
 	let id: UUID
 	let name: String
+	let isStartingVillageNPC: Bool
+	var hasTalkedToBefore: Bool
+	var job: NPCJob?
 	// let age: Int
 	let gender: Gender
+	private(set) var positionToWalkTo: TilePosition?
+	private(set) var attributes: [NPCAttribute] = []
 
-	init(id: UUID = UUID(), name: String? = nil /* , age: Int? = nil */, gender: Gender? = nil) {
+	init(id: UUID = UUID(), name: String? = nil /* , age: Int? = nil */, gender: Gender? = nil, job: NPCJob? = nil, isStartingVillageNPC: Bool = false, positionToWalkTo: TilePosition? = nil) {
 		self.id = id
 		self.gender = gender ?? Gender.allCases.randomElement()!
-		self.name = name ?? CitizenType.generateRandomName(for: self.gender)
+		self.name = name ?? Self.generateRandomName(for: self.gender)
 		// self.age = age ?? Int.random(in: 18 ... 80)
+		self.job = job
+		self.isStartingVillageNPC = isStartingVillageNPC
+		self.hasTalkedToBefore = false
+		self.positionToWalkTo = positionToWalkTo
 	}
 
 	static func generateRandomName(for gender: Gender) -> String {
@@ -36,4 +45,8 @@ struct CitizenType: Codable, Equatable, Hashable, Identifiable {
 
 enum Gender: String, Codable, CaseIterable {
 	case male, female
+}
+
+enum NPCAttribute: Codable, CaseIterable {
+	case needsAttention
 }

@@ -89,7 +89,7 @@ enum Utils {
 							case "4":
 								return MapTile(type: .door(tile: .init(type: .castle(side: .left))), isWalkable: true, event: .openDoor)
 							case "K":
-								return MapTile(type: .npc(tile: .init(type: .king)), isWalkable: true, event: .talkToNPC)
+								return MapTile(type: .npc(tile: NPCTile(npc: .init(job: .king, isStartingVillageNPC: true))), isWalkable: true, event: .talkToNPC)
 							case "b":
 								return MapTile(type: .bed(tile: .init(isPlacedByPlayer: false)), isWalkable: true)
 							case "@":
@@ -106,7 +106,7 @@ enum Utils {
 							case "F":
 								return MapTile(type: .station(station: .init(type: .furnace(progress: .empty))), isWalkable: true, event: .useStation)
 							case "1":
-								return MapTile(type: .npc(tile: NPCTile(type: .blacksmith)), isWalkable: true, event: .talkToNPC)
+								return MapTile(type: .npc(tile: NPCTile(npc: .init(job: .blacksmith, isStartingVillageNPC: true))), isWalkable: true, event: .talkToNPC)
 							case "D":
 								return MapTile(type: .door(tile: DoorTile(type: .blacksmith)), isWalkable: true, event: .openDoor)
 							case "@":
@@ -121,7 +121,7 @@ enum Utils {
 							case "M":
 								return MapTile(type: .startMining, isWalkable: true, event: .startMining)
 							case "1":
-								return MapTile(type: .npc(tile: NPCTile(type: .miner)), isWalkable: true, event: .talkToNPC)
+								return MapTile(type: .npc(tile: NPCTile(npc: .init(job: .miner, isStartingVillageNPC: true))), isWalkable: true, event: .talkToNPC)
 							case "D":
 								return MapTile(type: .door(tile: DoorTile(type: .mine)), isWalkable: true, event: .openDoor)
 							case "@":
@@ -142,11 +142,11 @@ enum Utils {
 							case "3":
 								return MapTile(type: .shopStandingArea(type: .help), event: .talkToNPC)
 							case "4":
-								return MapTile(type: .npc(tile: .init(type: .salesman(type: .buy))))
+								return MapTile(type: .npc(tile: NPCTile(npc: .init(job: .salesman(type: .buy), isStartingVillageNPC: true))))
 							case "5":
-								return MapTile(type: .npc(tile: .init(type: .salesman(type: .sell))))
+								return MapTile(type: .npc(tile: NPCTile(npc: .init(job: .salesman(type: .sell), isStartingVillageNPC: true))))
 							case "6":
-								return MapTile(type: .npc(tile: .init(type: .salesman(type: .help))))
+								return MapTile(type: .npc(tile: NPCTile(npc: .init(job: .salesman(type: .help), isStartingVillageNPC: true))))
 							case "@":
 								return MapTile(type: .playerStart, isWalkable: true)
 							default:
@@ -159,9 +159,9 @@ enum Utils {
 							case "D":
 								return MapTile(type: .door(tile: DoorTile(type: .builder)), isWalkable: true, event: .openDoor)
 							case "1":
-								return MapTile(type: .npc(tile: .init(type: .builder)), event: .talkToNPC)
+								return MapTile(type: .npc(tile: NPCTile(npc: .init(job: .builder, isStartingVillageNPC: true))), event: .talkToNPC)
 							case "2":
-								return MapTile(type: .npc(tile: .init(type: .builder_helper)), event: .talkToNPC)
+								return MapTile(type: .npc(tile: NPCTile(npc: .init(job: .builder_helper, isStartingVillageNPC: true))), event: .talkToNPC)
 							case "w":
 								return MapTile(type: .station(station: .init(type: .workbench)), isWalkable: true, event: .useStation)
 							case "@":
@@ -178,7 +178,7 @@ enum Utils {
 							case "@":
 								return MapTile(type: .playerStart, isWalkable: true)
 							case "1":
-								return MapTile(type: .npc(tile: .init(type: .hunter)), isWalkable: true, event: .talkToNPC)
+								return MapTile(type: .npc(tile: NPCTile(npc: .init(job: .hunter, isStartingVillageNPC: true))), isWalkable: true, event: .talkToNPC)
 							default:
 								return MapTile(type: .plain, isWalkable: true)
 						}
@@ -224,9 +224,9 @@ enum Utils {
 							case "a":
 								return MapTile(type: .door(tile: DoorTile(type: .farm(type: .farm_area))), isWalkable: true, event: .openDoor)
 							case "1":
-								return MapTile(type: .npc(tile: .init(type: .farmer)), isWalkable: true, event: .talkToNPC)
+								return MapTile(type: .npc(tile: NPCTile(npc: .init(job: .farmer, isStartingVillageNPC: true))), isWalkable: true, event: .talkToNPC)
 							case "2":
-								return MapTile(type: .npc(tile: .init(type: .farmer_helper)), isWalkable: true, event: .talkToNPC)
+								return MapTile(type: .npc(tile: NPCTile(npc: .init(job: .farmer_helper, isStartingVillageNPC: true))), isWalkable: true, event: .talkToNPC)
 							case "p":
 								return MapTile(type: .pot(tile: .init(cropTile: .init(type: .carrot))), isWalkable: true, event: .collectCrop)
 							case "P":
@@ -258,9 +258,9 @@ enum Utils {
 							case "#":
 								return MapTile(type: .building(tile: .init(isPlacedByPlayer: false)), isWalkable: false)
 							case "1":
-								return MapTile(type: .npc(tile: NPCTile(type: .carpenter)), isWalkable: true, event: .talkToNPC)
+								return MapTile(type: .npc(tile: NPCTile(npc: .init(job: .carpenter, isStartingVillageNPC: true))), isWalkable: true, event: .talkToNPC)
 							case "2":
-								return MapTile(type: .npc(tile: NPCTile(type: .carpenter_helper)), isWalkable: true, event: .talkToNPC)
+								return MapTile(type: .npc(tile: NPCTile(npc: .init(job: .carpenter_helper, isStartingVillageNPC: true))), isWalkable: true, event: .talkToNPC)
 							case "D":
 								return MapTile(type: .door(tile: DoorTile(type: .carpenter)), isWalkable: true, event: .openDoor)
 							case "@":
@@ -288,7 +288,7 @@ enum Utils {
 							case "@":
 								return MapTile(type: .playerStart, isWalkable: true)
 							case "1":
-								return MapTile(type: .npc(tile: NPCTile(type: .potter)), isWalkable: true, event: .talkToNPC)
+								return MapTile(type: .npc(tile: NPCTile(npc: .init(job: .potter, isStartingVillageNPC: true))), isWalkable: true, event: .talkToNPC)
 							default:
 								return MapTile(type: .plain, isWalkable: true)
 						}

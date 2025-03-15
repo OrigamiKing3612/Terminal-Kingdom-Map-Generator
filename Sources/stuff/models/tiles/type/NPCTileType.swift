@@ -1,4 +1,4 @@
-enum NPCTileType: Codable, Equatable {
+enum NPCJob: Codable, Hashable, Equatable {
 	case blacksmith
 	case blacksmith_helper
 	case miner
@@ -7,7 +7,6 @@ enum NPCTileType: Codable, Equatable {
 	case carpenter_helper
 	case farmer
 	case farmer_helper
-	case citizen(type: CitizenType)
 
 	case king
 	case salesman(type: SalesmanType)
