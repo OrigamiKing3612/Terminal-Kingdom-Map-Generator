@@ -228,7 +228,7 @@ enum Utils {
 							case "2":
 								return MapTile(type: .npc(tile: NPCTile(npc: .init(job: .farmer_helper, isStartingVillageNPC: true))), isWalkable: true, event: .talkToNPC)
 							case "p":
-								return MapTile(type: .pot(tile: .init(cropTile: .init(type: .carrot))), isWalkable: true, event: .collectCrop)
+								return MapTile(type: .pot(tile: .init(cropTile: .init(type: .carrot, growthStage: 180))), isWalkable: true, event: .collectCrop)
 							case "P":
 								return MapTile(type: .pot(tile: .init(cropTile: .init(type: .none))), isWalkable: true, event: .collectCrop)
 							case "@":
