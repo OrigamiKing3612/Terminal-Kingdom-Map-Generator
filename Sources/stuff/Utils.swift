@@ -58,7 +58,7 @@ enum Utils {
 					case "F":
 						MapTile(type: .gate(tile: .init(isPlacedByPlayer: false)), isWalkable: false)
 					case "c":
-						MapTile(type: .pot(tile: .init(cropTile: .init(type: .carrot))), isWalkable: true, event: .collectCrop)
+						MapTile(type: .pot(tile: .init(cropTile: .init(type: .carrot, growthStage: 180))), isWalkable: true, event: .collectCrop)
 					case "(":
 						MapTile(type: .door(tile: .init(type: .farm(type: .farm_area))), isWalkable: true, event: .openDoor)
 					default:
