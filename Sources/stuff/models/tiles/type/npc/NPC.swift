@@ -9,7 +9,7 @@ struct NPC: Codable, Hashable, Equatable {
 	// skill level
 	let age: Int
 	let gender: Gender
-	let kingdomID: UUID?
+	let villageID: UUID?
 	private(set) var positionToWalkTo: TilePosition?
 	private(set) var attributes: [NPCAttribute] = []
 	private var _hunger: Double = 100
@@ -21,7 +21,7 @@ struct NPC: Codable, Hashable, Equatable {
 		self.job = job
 		self.isStartingVillageNPC = isStartingVillageNPC
 		self.hasTalkedToBefore = false
-		self.kingdomID = nil
+		self.villageID = nil
 		self.age = age
 	}
 
@@ -62,7 +62,7 @@ struct NPC: Codable, Hashable, Equatable {
 		case hasTalkedToBefore
 		case job
 		case gender
-		case kingdomID
+		case villageID
 		case positionToWalkTo
 		case attributes
 		case hunger
@@ -78,7 +78,7 @@ struct NPC: Codable, Hashable, Equatable {
 		self.hasTalkedToBefore = try container.decode(Bool.self, forKey: NPC.CodingKeys.hasTalkedToBefore)
 		self.job = try container.decodeIfPresent(NPCJob.self, forKey: NPC.CodingKeys.job)
 		self.gender = try container.decode(Gender.self, forKey: NPC.CodingKeys.gender)
-		self.kingdomID = try container.decodeIfPresent(UUID.self, forKey: NPC.CodingKeys.kingdomID)
+		self.villageID = try container.decodeIfPresent(UUID.self, forKey: NPC.CodingKeys.villageID)
 		self.positionToWalkTo = try container.decodeIfPresent(TilePosition.self, forKey: NPC.CodingKeys.positionToWalkTo)
 		self.attributes = try container.decode([NPCAttribute].self, forKey: NPC.CodingKeys.attributes)
 		self._hunger = try container.decode(Double.self, forKey: NPC.CodingKeys.hunger)
@@ -94,7 +94,7 @@ struct NPC: Codable, Hashable, Equatable {
 		try container.encode(hasTalkedToBefore, forKey: NPC.CodingKeys.hasTalkedToBefore)
 		try container.encodeIfPresent(job, forKey: NPC.CodingKeys.job)
 		try container.encode(gender, forKey: NPC.CodingKeys.gender)
-		try container.encodeIfPresent(kingdomID, forKey: NPC.CodingKeys.kingdomID)
+		try container.encodeIfPresent(villageID, forKey: NPC.CodingKeys.villageID)
 		try container.encodeIfPresent(positionToWalkTo, forKey: NPC.CodingKeys.positionToWalkTo)
 		try container.encode(attributes, forKey: NPC.CodingKeys.attributes)
 		try container.encode(_hunger, forKey: NPC.CodingKeys.hunger)
