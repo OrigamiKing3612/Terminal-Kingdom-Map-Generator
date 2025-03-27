@@ -5,16 +5,10 @@ struct NPCTile: Codable, Equatable {
 	let villageID: UUID
 	let npcID: UUID
 
-	private init(id: UUID = UUID(), npcID: UUID, villageID: UUID) {
-		self.id = id
-		self.npcID = npcID
-		self.villageID = villageID
-	}
-
-	init(id: UUID = UUID(), npc: NPC, villageID: UUID) {
+	init(id: UUID = UUID(), npc: NPC) {
 		self.id = id
 		self.npcID = npc.id
-		self.villageID = villageID
+		self.villageID = UUID() // Will be overwriten in game
 	}
 }
 

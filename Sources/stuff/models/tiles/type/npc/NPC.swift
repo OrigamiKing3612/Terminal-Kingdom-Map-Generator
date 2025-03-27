@@ -1,6 +1,6 @@
 import Foundation
 
-struct NPC: Codable, Hashable, Equatable {
+struct NPC: Encodable, Hashable, Equatable {
 	let id: UUID
 	let name: String
 	let isStartingVillageNPC: Bool
@@ -67,22 +67,6 @@ struct NPC: Codable, Hashable, Equatable {
 		case attributes
 		case hunger
 		case age
-	}
-
-	init(from decoder: any Decoder) throws {
-		let container: KeyedDecodingContainer<NPC.CodingKeys> = try decoder.container(keyedBy: NPC.CodingKeys.self)
-
-		self.id = try container.decode(UUID.self, forKey: NPC.CodingKeys.id)
-		self.name = try container.decode(String.self, forKey: NPC.CodingKeys.name)
-		self.isStartingVillageNPC = try container.decode(Bool.self, forKey: NPC.CodingKeys.isStartingVillageNPC)
-		self.hasTalkedToBefore = try container.decode(Bool.self, forKey: NPC.CodingKeys.hasTalkedToBefore)
-		self.job = try container.decodeIfPresent(NPCJob.self, forKey: NPC.CodingKeys.job)
-		self.gender = try container.decode(Gender.self, forKey: NPC.CodingKeys.gender)
-		self.villageID = try container.decodeIfPresent(UUID.self, forKey: NPC.CodingKeys.villageID)
-		self.positionToWalkTo = try container.decodeIfPresent(TilePosition.self, forKey: NPC.CodingKeys.positionToWalkTo)
-		self.attributes = try container.decode([NPCAttribute].self, forKey: NPC.CodingKeys.attributes)
-		self._hunger = try container.decode(Double.self, forKey: NPC.CodingKeys.hunger)
-		self.age = try container.decode(Int.self, forKey: NPC.CodingKeys.age)
 	}
 
 	func encode(to encoder: any Encoder) throws {
